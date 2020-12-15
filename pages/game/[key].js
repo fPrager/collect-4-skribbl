@@ -89,7 +89,7 @@ const Game = () => {
         {
         words.map((w) => (
 
-          <Button key={w.id} style={{ marginRight: '0.5rem' }} auto loading={removingWords.includes(w.id)} onClick={() => (removeWord(w.id))}>
+          <Button key={w.id} style={{ marginRight: '0.5rem', marginTop: '0.5rem' }} auto loading={removingWords.includes(w.id)} onClick={() => (removeWord(w.id))}>
             <b>{ w.content }</b>
             <Spacer x={0.5} />
             X
