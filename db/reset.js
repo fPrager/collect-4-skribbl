@@ -1,6 +1,6 @@
 import DB from './db';
 
 export default async () => {
-  DB.words.deleteMany();
-  DB.game.deleteMany();
+  await DB.words.deleteMany();
+  await DB.game.deleteMany();
 };
