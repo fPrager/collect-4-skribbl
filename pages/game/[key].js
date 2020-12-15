@@ -12,9 +12,8 @@ const Game = () => {
   let client = '';
   if (typeof window !== 'undefined') {
     client = localStorage.getItem('client');
-    console.log('got ', client);
     if (!client) {
-      client = Math.random().toString(32);
+      client = Math.round(Math.random() * Date.now()).toString();
       localStorage.setItem('client', client);
     }
   }
@@ -53,6 +52,12 @@ const Game = () => {
     await requestWords();
     reset();
     setIsSaving(false);
+  };
+
+  const handleKeypress = (e) => {
+    if (e.key === 'Enter') {
+      addWord();
+    }
   };
 
   const removeWord = async (id) => {
@@ -108,7 +113,7 @@ const Game = () => {
         {' '}
         {key}
       </h2>
-      <Input disabled={isSaving} {...bindings} />
+      <Input disabled={isSaving} onKeyPress={handleKeypress} {...bindings} />
       <Spacer y={0.5} />
       <Button
         auto
